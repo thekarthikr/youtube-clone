@@ -12,9 +12,6 @@ function Navbar() {
       alignItems='center'
       position='sticky'
       top='0'
-      sx={{
-        backgroundColor: "hsl(0, 0%, 7%)",
-      }}
     >
       <Link>
         <img width='100px' src={logo} alt='Youtube logo' />
