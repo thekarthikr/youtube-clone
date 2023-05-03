@@ -20,7 +20,6 @@ function Sidebar({ selectedCategory, setSelectedCategory }) {
           className='category-btn'
           onClick={() => setSelectedCategory(category.name)}
           style={{
-            background: "transparent",
             outline: "none",
             border: "none",
             display: "flex",
