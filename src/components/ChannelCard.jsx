@@ -3,15 +3,28 @@ import { CheckCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { demoProfilePicture } from "../utils/constants";
 
-function ChannelCard({ channelDetail }) {
+function ChannelCard({ channelDetail, marginTop, width }) {
   return (
     <Box
       sx={{
         boxShadow: "none",
         borderRadius: "20px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: { xs: "356px", md: "320px" },
+        height: "326px",
+        margin: "auto",
+        marginTop,
       }}
     >
-      <Link to={`/channel/${channelDetail?.id?.channelId}`}>
+      <Link
+        to={`${
+          channelDetail?.id.channelId
+            ? `/channel/${channelDetail?.id?.channelId}`
+            : ``
+        }`}
+      >
         <CardContent
           sx={{
             display: "flex",
@@ -36,14 +49,46 @@ function ChannelCard({ channelDetail }) {
             <CheckCircle sx={{ fontSize: 12, color: "gray", ml: "5px" }} />
           </Typography>
 
-          {/* {channelDetail?.statistics?.subscriberCount && (
-            <Typography>
-              {parseInt(
-                channelDetail?.statistics?.subscriberCount
-              ).toLocaleString()}
-              Subscribers
+          <Typography
+            sx={{
+              color: "gray",
+              display: "flex",
+              gap: "1rem",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <Typography>{channelDetail?.snippet?.customUrl}</Typography>
+            {channelDetail?.statistics?.subscriberCount && (
+              <Typography>
+                {parseInt(
+                  channelDetail?.statistics?.subscriberCount
+                ).toLocaleString("en-US")}{" "}
+                Subscribers
+              </Typography>
+            )}
+            {channelDetail?.statistics?.videoCount && (
+              <Typography>
+                {parseInt(channelDetail?.statistics?.videoCount).toLocaleString(
+                  "en-US"
+                )}{" "}
+                {""}
+                Vidoes
+              </Typography>
+            )}
+          </Typography>
+
+          {channelDetail?.snippet?.description && (
+            <Typography
+              sx={{
+                color: "gray",
+                fontSize: "14px",
+                textAlign: "center",
+                width,
+              }}
+            >
+              {channelDetail?.snippet?.description}
             </Typography>
-          )} */}
+          )}
         </CardContent>
       </Link>
     </Box>
