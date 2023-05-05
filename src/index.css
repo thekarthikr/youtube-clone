@@ -11,7 +11,7 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width:0px;
   height: 5px;
 }
 
@@ -42,14 +42,9 @@ a {
 .search-bar{
   border:none;
   outline:none;
-  width:250px;
+  width:350px;
 }
 
-@media screen and (min-width: 600px){
-  .search-bar{
-    width:350px;
-  }
-}
 
 .category-btn{
   font-weight: bold !important;
