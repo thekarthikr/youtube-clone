@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
-import { Typography, Box, Stack, CardMedia } from "@mui/material";
+import { Typography, Box, Stack } from "@mui/material";
 import {
   CheckCircle,
   ThumbDownOutlined,
@@ -11,6 +11,7 @@ import {
 import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import Spinner from "./Spinner";
+import VideoComments from "./VideoComments";
 
 function VideoDetail() {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -18,7 +19,6 @@ function VideoDetail() {
   const [videos, setVideos] = useState(null);
   const [showMoreTags, setShowMoreTags] = useState(false);
   const [showMoreDesc, setShowMoreDesc] = useState(false);
-  const [comments, setComments] = useState(null);
 
   const { id } = useParams();
 
@@ -29,10 +29,6 @@ function VideoDetail() {
 
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
       (data) => setVideos(data.items)
-    );
-
-    fetchFromAPI(`commentThreads?part=snippet&videoId=${id}`).then((data) =>
-      setComments(data.items)
     );
   }, [id]);
 
@@ -213,53 +209,7 @@ function VideoDetail() {
               {" "}
               Comments
             </Typography>
-            <Stack
-              direction='column'
-              gap='1rem'
-              sx={{
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-                borderRadius: "30px",
-                p: "15px",
-                marginTop: "10px",
-              }}
-            >
-              {comments.map((comment) => (
-                <Stack
-                  direction='row'
-                  gap='1rem'
-                  alignItems='center'
-                  sx={{
-                    backgroundColor: "rgba(255, 255, 255, 0.02)",
-                    borderRadius: "30px",
-                    p: "15px",
-                  }}
-                  key={comment.id}
-                >
-                  <CardMedia
-                    image={
-                      comment.snippet.topLevelComment.snippet
-                        .authorProfileImageUrl
-                    }
-                    alt={
-                      comment.snippet.topLevelComment.snippet.authorDisplayName
-                    }
-                    sx={{ borderRadius: "50%", height: "30px", width: "30px" }}
-                  />
-
-                  <Stack direction='column'>
-                    <Typography sx={{ color: "gray", fontSize: "15px" }}>
-                      {
-                        comment.snippet.topLevelComment.snippet
-                          .authorDisplayName
-                      }
-                    </Typography>
-                    <Typography sx={{ color: "white" }}>
-                      {comment.snippet.topLevelComment.snippet.textOriginal}
-                    </Typography>
-                  </Stack>
-                </Stack>
-              ))}
-            </Stack>
+            <VideoComments id={id} />
           </Box>
         </Box>
 
