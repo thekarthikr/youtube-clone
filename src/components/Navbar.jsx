@@ -12,6 +12,7 @@ function Navbar() {
       alignItems='center'
       position='sticky'
       top='0'
+      zIndex='10'
       sx={{ backgroundColor: "hsl(0, 0%, 7%)" }}
     >
       <Link to='/'>

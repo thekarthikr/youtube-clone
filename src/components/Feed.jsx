@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Box, Stack, Typography } from "@mui/material";
-import Sidebar from "./Sidebar";
-import Videos from "./Videos";
+import { Box, Stack } from "@mui/material";
+
+import { Sidebar, Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
+import Spinner from "./Spinner";
 
 function Feed() {
   const [selectedCategory, setSelectedCategory] = useState("Popular");
@@ -52,7 +53,7 @@ function Feed() {
           mr: "5px",
         }}
       >
-        <Videos vidoes={videos} />
+        <Videos videos={videos} />
       </Box>
     </Stack>
   );

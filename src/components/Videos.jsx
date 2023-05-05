@@ -1,10 +1,12 @@
 import { Stack, Box } from "@mui/material";
 import { VideoCard, ChannelCard } from "./";
+import Spinner from "./Spinner";
 
-function Videos({ videos }) {
+function Videos({ videos, direction }) {
+  if (!videos?.length) return <Spinner />;
   return (
     <Stack
-      direction='row'
+      direction={direction || "row"}
       flexWrap='wrap'
       justifyContent='center'
       alignItems='center'
