@@ -5,12 +5,13 @@ import SearchBar from "../components/SearchBar";
 function Navbar() {
   return (
     <Stack
-      direction='row'
+      direction={{ xs: "column", sm: "row" }}
       p={2}
       justifyContent='space-between
     '
       alignItems='center'
       position='sticky'
+      gap='5px'
       top='0'
       zIndex='10'
       sx={{ backgroundColor: "hsl(0, 0%, 7%)" }}
