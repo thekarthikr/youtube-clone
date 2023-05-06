@@ -63,76 +63,60 @@ function VideoDetail() {
             </Typography>
             <Stack
               direction='row'
-              justifyContent='space-between'
+              alignItems='center'
+              gap='.5rem'
               sx={{ color: "#fff" }}
               py={1}
               px={2}
             >
-              <Link
-                to={`/channel/${channelId}`}
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <Box>
-                  <Typography
-                    display='flex'
-                    alignItems='center'
-                    color='gray'
-                    fontWeight='bold'
-                  >
-                    {channelTitle}
-                    <CheckCircle
-                      sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
-                    />
-                  </Typography>
-                </Box>
+              <Link to={`/channel/${channelId}`}>
+                <Typography
+                  whiteSpace='nowrap'
+                  display='flex'
+                  alignItems='center'
+                  color='gray'
+                  fontWeight='bold'
+                >
+                  {channelTitle}
+                  <CheckCircle
+                    sx={{
+                      fontSize: "12px",
+                      color: "gray",
+                      ml: "5px",
+                    }}
+                  />
+                </Typography>
               </Link>
 
-              <Stack direction='row' gap='20px' alignItems='center'>
-                <Typography
-                  variant='body1'
+              <Typography
+                variant='body1'
+                fontSize={{ xs: "10px", sm: "1rem" }}
+                sx={{
+                  opacity: 0.7,
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  p: ".5rem",
+                  borderRadius: "30px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+              >
+                <ThumbUpOutlined
                   sx={{
-                    opacity: 0.7,
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                    p: ".5rem",
-                    borderRadius: "30px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
+                    fontSize: "20px",
+                    color: "gray",
                   }}
-                >
-                  {Number(viewCount).toLocaleString()} views
-                </Typography>
-                <Typography
-                  variant='body1'
+                />
+                {Number(likeCount).toLocaleString()} {""}
+                {"|"}
+                {""}
+                <ThumbDownOutlined
                   sx={{
-                    opacity: 0.7,
-                    backgroundColor: "rgba(255, 255, 255, 0.1)",
-                    p: ".5rem",
-                    borderRadius: "30px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "5px",
+                    fontSize: "20px",
+                    color: "gray",
                   }}
-                >
-                  <ThumbUpOutlined
-                    sx={{
-                      fontSize: "20px",
-                      color: "gray",
-                      ml: "5px",
-                    }}
-                  />
-                  {Number(likeCount).toLocaleString()} {""}
-                  {"|"}
-                  {""}
-                  <ThumbDownOutlined
-                    sx={{
-                      fontSize: "20px",
-                      color: "gray",
-                      ml: "5px",
-                    }}
-                  />
-                </Typography>
-              </Stack>
+                />
+              </Typography>
             </Stack>
             {/* Description */}
             <Box
@@ -144,6 +128,9 @@ function VideoDetail() {
               }}
             >
               <Box sx={{ color: "gray" }}>
+                <Typography>
+                  {Number(viewCount).toLocaleString()} views
+                </Typography>
                 <Typography sx={{ fontWeight: "bold" }}>
                   Published at {publishedAt}
                 </Typography>

@@ -1,19 +1,16 @@
-import { Box, CardContent, Typography, CardMedia } from "@mui/material";
+import { Box, CardContent, Typography, CardMedia, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { demoProfilePicture } from "../utils/constants";
 
-function ChannelCard({ channelDetail, marginTop, width }) {
+function ChannelCard({ channelDetail, marginTop }) {
   return (
-    <Box
+    <Stack
+      direction='column'
       sx={{
         boxShadow: "none",
         borderRadius: "20px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: { xs: "356px", md: "320px" },
-        height: "326px",
+        width: { xs: "100%", md: "80%", lg: "70%" },
         margin: "auto",
         marginTop,
       }}
@@ -49,12 +46,14 @@ function ChannelCard({ channelDetail, marginTop, width }) {
             <CheckCircle sx={{ fontSize: 12, color: "gray", ml: "5px" }} />
           </Typography>
 
-          <Typography
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            alignItems='center'
+            textAlign='center'
             sx={{
               color: "gray",
-              display: "flex",
+              flexWrap: "wrap",
               gap: "1rem",
-              whiteSpace: "nowrap",
             }}
           >
             <Typography>{channelDetail?.snippet?.customUrl}</Typography>
@@ -75,7 +74,7 @@ function ChannelCard({ channelDetail, marginTop, width }) {
                 Vidoes
               </Typography>
             )}
-          </Typography>
+          </Stack>
 
           {channelDetail?.snippet?.description && (
             <Typography
@@ -83,7 +82,7 @@ function ChannelCard({ channelDetail, marginTop, width }) {
                 color: "gray",
                 fontSize: "14px",
                 textAlign: "center",
-                width,
+                width: "fit-content",
               }}
             >
               {channelDetail?.snippet?.description}
@@ -91,7 +90,7 @@ function ChannelCard({ channelDetail, marginTop, width }) {
           )}
         </CardContent>
       </Link>
-    </Box>
+    </Stack>
   );
 }
 

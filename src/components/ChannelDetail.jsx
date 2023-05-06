@@ -45,11 +45,7 @@ function ChannelDetail() {
           />
         )}
 
-        <ChannelCard
-          channelDetail={channelDetail}
-          marginTop='-93px'
-          width='150%'
-        />
+        <ChannelCard channelDetail={channelDetail} marginTop='-60px' />
       </Box>
 
       <Box p={5}>
