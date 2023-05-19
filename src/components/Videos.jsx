@@ -1,9 +1,9 @@
 import { Stack, Box } from "@mui/material";
 import { VideoCard, ChannelCard } from "./";
-import Spinner from "./Spinner";
+import CardSkeleton from "./CardSkeleton";
 
 function Videos({ videos, direction }) {
-  if (!videos?.length) return <Spinner />;
+  if (!videos?.length) return <CardSkeleton direction={direction} />;
   return (
     <Stack
       direction={direction || "row"}

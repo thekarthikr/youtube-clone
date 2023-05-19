@@ -10,8 +10,9 @@ import {
 
 import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
-import Spinner from "./Spinner";
+
 import VideoComments from "./VideoComments";
+import VideoDeailsSkeleton from "./VideoDeailsSkeleton";
 
 function VideoDetail() {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -32,7 +33,7 @@ function VideoDetail() {
     );
   }, [id]);
 
-  if (!videoDetail?.snippet) return <Spinner />;
+  if (!videoDetail?.snippet) return <VideoDeailsSkeleton />;
 
   const {
     snippet: { publishedAt, channelId, title, description, channelTitle, tags },

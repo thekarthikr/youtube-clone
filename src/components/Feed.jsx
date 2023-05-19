@@ -3,10 +3,9 @@ import { Box, Stack } from "@mui/material";
 
 import { Sidebar, Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
-import Spinner from "./Spinner";
 
 function Feed() {
-  const [selectedCategory, setSelectedCategory] = useState("Popular");
+  const [selectedCategory, setSelectedCategory] = useState("New Videos");
 
   const [videos, setVidoes] = useState([]);
 
